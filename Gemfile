@@ -60,3 +60,6 @@ group :development do
   # gem "spring"
 end
 
+gem 'foreman'
+
+gem "tailwindcss-rails", "~> 2.6"
