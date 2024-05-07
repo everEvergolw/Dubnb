@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-2xl px-4 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
     <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
      
-      <% 10.times do %>
+      <% @properties.each do  | property |%>
         
         <div class="group relative">
           <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
@@ -14,7 +14,10 @@
               <h3 class="text-base font-medium text-gray-700">
                 <a href="#">
                   <span aria-hidden="true" class="absolute inset-0"></span>
+
+                  <%= property.city%>, <%= property.country%>
                   Udaipur, India
+               
                 </a>
               </h3>
               
@@ -36,7 +39,11 @@
             
             <p class="mt-0.5 text-sm text-gray-500">Hosted by Rajat</p>
             <p class="mt-0.5 text-sm text-gray-500">20-25 Jan</p>
-            <p class="mt-0.5 text-sm font-light text-black"><span class="font-medium">$110</span> night</p>
+            <p class="mt-0.5 text-sm font-light text-black">          
+
+              <span class="font-medium"><%= humanized_money_with_symbol(property.price) %></span> night
+              
+            </p>
             
           </div>
         </div>

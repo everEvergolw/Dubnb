@@ -65,3 +65,7 @@ gem 'foreman'
 gem "tailwindcss-rails", "~> 2.6"
 
 gem 'devise', '~>4.9', '>= 4.9.3'
+
+gem 'faker'
+
+gem 'money-rails', '~>1.12'
