@@ -5,7 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :wishlists, dependent: :destroy
-  has_many :wishlisted_properties, through: :wishlist, source: :user, dependent: :destroy
+  has_many :wishlisted_properties, through: :wishlists, source: :user, dependent: :destroy
+
+
+  has_many :reservations, dependent: :destroy
+  has_many :reserved_properties, through: :reservations, source: :property, dependent: :destroy
 
 
 end
