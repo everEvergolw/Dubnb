@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
   end
 
+  resources :properties, only: [:show] 
+
 end
