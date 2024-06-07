@@ -1,0 +1,60 @@
+import { Controller } from "@hotwired/stimulus"
+import flatpickr from "flatpickr";
+
+export default class extends Controller {
+  static targets = ["baseFare", "checkin", "checkout", "numberOfNights", "serviceFee", "totalAmount"]
+
+  SERVICE_FEE_PERCENTAGE  = 0.18;
+
+  connect() {
+    flatpickr(this.checkinTarget, {
+      minDate: new Date().fp_incr(1),
+      onChange: (selectedDates, dateStr, instance) => {
+        this.triggerCheckoutDatePicker(selectedDates);
+      },
+    });
+
+    this.updateDetails();
+  }
+
+  triggerCheckoutDatePicker(selectedDates){
+    flatpickr(this.checkoutTarget, {
+      minDate: new Date(selectedDates).fp_incr(1),
+      onChange: (selectedDates, dateStr, instance) => {
+        this.updateDetails();
+      },
+    });
+
+    this.checkoutTarget.click();
+  }
+
+  updateDetails(){
+    const nightsCount = this.numberOfNights;
+    const baseFair = this.calculateBaseFare(nightsCount);
+    const serviceFee = this.calculateServiceFee(baseFair);
+    const totalAmount = this.calculateTotalAmount(baseFair, serviceFee);
+
+    this.numberOfNightsTarget.textContent = nightsCount;
+    this.baseFareTarget.textContent = baseFair;
+    this.serviceFeeTarget.textContent = serviceFee;
+    this.totalAmountTarget.textContent = totalAmount;
+  }
+
+  get numberOfNights() {
+    const checkinDate = new Date(this.checkinTarget.value);
+    const checkoutDate = new Date(this.checkoutTarget.value);
+    return (checkoutDate - checkinDate)/ (1000 * 60 * 60 * 24);
+  }
+
+  calculateBaseFare(nightsCount) {
+    return parseFloat((nightsCount * this.element.dataset.perNightPrice).toFixed(2));
+  }
+
+  calculateServiceFee(baseFair) {
+    return parseFloat((baseFair * this.SERVICE_FEE_PERCENTAGE).toFixed(2));
+  }
+
+  calculateTotalAmount(baseFair, serviceFee) {
+    return parseFloat((baseFair + serviceFee).toFixed(2));
+  }
+}
