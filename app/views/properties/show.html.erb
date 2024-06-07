@@ -94,11 +94,16 @@
         </div>
       </div>
 
+
+
+      
+
       <!-- Booking Component -->
       <div 
         class="mt-4 lg:mt-0 border rounded-xl p-6 shadow-xl h-auto"
         data-controller="booking"
         data-per-night-price="<%= humanized_money(@property.price) %>"
+        data-blocked-dates="<%= @blocked_dates %>"
         >
         <h2 class="sr-only">Booking information</h2>
         <p class="text-lg font-light tracking-tight text-gray-900"><span class="text-2xl font-semibold"><%= humanized_money_with_symbol(@property.price) %></span> night</p>
@@ -155,6 +160,10 @@
           <p><%= currency_symbol %><span data-booking-target="totalAmount">0</span></p>
         </div>
       </div>
+
+
+
+
 
       <div class="py-10 lg:col-span-2 lg:col-start-1 lg:pr-8">
         <!-- Description and details -->
