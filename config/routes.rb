@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   end
 
-  resources :properties, only: [:show] 
+  resources :properties, only: [:show] do
+  
+    resources :bookings, only: [:new]
+
+  end
 
 end

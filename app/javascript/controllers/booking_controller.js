@@ -36,7 +36,6 @@ export default class extends Controller {
 
   formatBlockedDates() {
     const blockedDates = JSON.parse(this.element.dataset.blockedDates)
-    
     for(let i = 0; i < blockedDates.length; i++){
       const dates = blockedDates[i];
       this.disableDates.push(
@@ -76,5 +75,19 @@ export default class extends Controller {
 
   calculateTotalAmount(baseFair, serviceFee) {
     return parseFloat((baseFair + serviceFee).toFixed(2));
+  }l
+
+  reserveProperty(e) {
+    e.preventDefault();
+
+    const paramsData = {
+      checkin_date: this.checkinTarget.value,
+      checkout_date: this.checkoutTarget.value,
+    }
+
+    const paramsURL = (new URLSearchParams(paramsData)).toString();
+
+    const baseURL = e.target.dataset.reservePropertyUrl;
+    Turbo.visit(`${baseURL}?${paramsURL}`);
   }
 }
