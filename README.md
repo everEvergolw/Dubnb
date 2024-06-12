@@ -20,7 +20,7 @@ This project is a clone of Airbnb, built using Ruby on Rails as part of a 2024 i
 ## Screenshots
 
 ### 1. Home Interface
-![Home Interface](path/to/your/home_interface.png)  
+![Home Interface](/pic/main.png)  
 *The main interface showing a broad view of available properties.*
 
 ### 2. Single Property Interface
