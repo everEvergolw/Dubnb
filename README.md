@@ -26,6 +26,8 @@ This project is a clone of Airbnb, built using Ruby on Rails as part of a 2024 i
 ### 2. Single Property Interface
 ![Single Property Interface](path/to/your/single_property_interface.png)  
 *A detailed view of a single property listing, showcasing the property details and booking options.*
+![Single Property Interface](path/to/your/single_property_interface.png)  
+*A detailed view of a single property listing, showcasing the property details and booking options.*
 
 ### 3. Payment Interface
 ![Payment Interface](path/to/your/payment_interface.png)  
